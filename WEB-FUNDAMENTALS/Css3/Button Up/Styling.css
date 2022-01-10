@@ -1,0 +1,24 @@
+.search,
+.plus,
+.Create {
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+.search {
+  border-radius: 60px;
+  width: 100px;
+  border-color: rgb(81, 201, 161);
+  color: rgb(81, 201, 161);
+}
+.plus {
+  background-color: rgb(81, 201, 161);
+  border-radius: 50%;
+  border-color: rgb(81, 201, 161);
+}
+.Create {
+  color: white;
+  background-color: rgb(48, 65, 216);
+  width: 10pc;
+  box-shadow: 10px 5px 5px black;
+}

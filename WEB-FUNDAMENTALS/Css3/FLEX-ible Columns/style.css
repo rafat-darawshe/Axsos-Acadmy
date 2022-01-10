@@ -1,0 +1,25 @@
+.row {
+    display: flex;
+}
+
+.col, .col-2, .col-3 {
+
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    background-color: rgb(108, 148, 148);
+    align-items: center;
+    justify-contentcopy: space-between;
+
+}
+
+.col-2 {
+    flex:2;
+    
+}
+
+.col-3 {
+    flex: 3;
+
+
