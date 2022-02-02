@@ -9,7 +9,7 @@ def dojo():
 @app.route('/Hi/<name>')
 def hello(name):
     print(name)
-    return "Hi, + name
+    return "Hi, + name"
 @app.route('/repeat/<times>/<name>')
 def name(times, name):
     print(name)
