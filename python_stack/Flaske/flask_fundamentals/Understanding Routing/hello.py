@@ -9,12 +9,10 @@ def dojo():
 @app.route('/Hi/<name>')
 def hello(name):
     print(name)
-    return "Hi, + name"
+    return "Hi " f'{name}'
 @app.route('/repeat/<times>/<name>')
-def name(times, name):
-    print(name)
-    print(times)
-    return f'{name}' * int(times)
+def repeat(times, name):
+    return f'{name} ' * int(times)
 if __name__=="__main__":    
     app.run(debug=True)    
     
