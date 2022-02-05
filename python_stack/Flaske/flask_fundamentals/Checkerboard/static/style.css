@@ -1,0 +1,19 @@
+.page{
+    text-align: center;
+    width: 900px;
+    
+}
+.box{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: inline-block;
+    background-color: red;
+}
+.box_1{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: inline-block;
+    background-color: black;
+}
