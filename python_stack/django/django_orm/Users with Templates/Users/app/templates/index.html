@@ -11,6 +11,7 @@
     <table style="width: 577px; margin:auto;" class="table table-dark table-striped" >
         <thead>
             <tr>
+                <td>ID</td>
                 <td>First Name</td>
                 <td>Last Name</td>
                 <td>Email</td>
@@ -20,6 +21,7 @@
         <tbody>
             {% for use in User %}
             <tr>
+                <td>{{use.id}}</td>
                 <td>{{use.first_name}}</td>
                 <td>{{use.last_name}}</td>
                 <td>{{use.email}}</td>
