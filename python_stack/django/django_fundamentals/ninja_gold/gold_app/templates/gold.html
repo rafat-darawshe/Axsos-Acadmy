@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Money</title>
+    <style>
+        .container{
+            width: 972px;
+            height: 521px;
+        }
+        .box1{
+            outline: solid black 2px;
+            height: 220px;
+            width: 200px;
+            font-family: sans-serif;
+        }
+        .farm{
+            height: 66px;
+        width: 96px;
+        margin-left: 49px;
+        }
+        .earns{
+            height: 46px;
+            width: 200px;
+            text-align: center;
+            font-size: 19px;
+        }
+        .button1{
+            height: 29px;
+            width: 99px;
+            margin-left: 48px;
+            box-shadow: 3px 3px black;
+        }
+        .boxes{
+            height: 279px;
+            width: 960px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .act{
+            width: 972px;
+            height: 200px;
+        }
+        h2{
+            height: 40px;
+            font-family: sans-serif;
+            width: 221px;
+            font-size: 19px;
+        }
+        .write{
+            outline: solid black 2px;
+            width: 955px;
+            height: 128px;
+        }
+        .text{
+            outline: solid black 2px;
+            height: 31px;
+            width: 200px;
+            margin-top: 10px;
+        }
+        .top{
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+            width: 300px;
+        }
+        .gold{
+            height: 30px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+    <p class="gold">Your Gold</p>
+    <div class="text">{{request.session.total}}</div>
+    </div>  
+
+<div class="container">
+    <div class="boxes">
+    <div class="box1">
+        <h1 class="farm">Farm</h1>
+        <p class="earns">(earns 10-20 golds)</p>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which_form" value="farm">
+            <input class="button1" type="submit" name="ok" value="Find Gold!">
+        </form>
+    </div>
+    <div class="box1">
+        <h1 class="farm">Cave</h1>
+        <p class="earns">(earns 5-10 golds)</p>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which_form" value="cave">
+            <input class="button1" type="submit" name="ok" value="Find Gold!">
+        </form>
+    </div>
+    <div class="box1">
+        <h1 class="farm">House</h1>
+        <p class="earns">(earns 2-5 golds)</p>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which_form" value="house">
+            <input class="button1" type="submit" name="ok" value="Find Gold!">
+        </form>
+    </div>
+    <div class="box1">
+        <h1 class="farm">Casino</h1>
+        <p class="earns">(earns/takes 0-50 golds)</p>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="which_form" value="casino">
+            <input class="button1" type="submit" name="ok" value="Find Gold!">
+        </form>
+    </div>
+</div>
+<div class="act">
+    <h2>activity :</h2>
+    <div style="width: 1200px; height: 200px; outline: 2px solid black; " >
+        {% if request.session.cave_a == 'cave_a' %}
+        <p >earned {{request.session.cave_earn}} from the cave! {{request.session.time}}</p> 
+        {% endif %}
+        {% if request.session.farm_a == 'farm_a' %}
+        <p>earned {{request.session.farm_earn}} from the farm! {{request.session.time}}</p> 
+        {% endif %}
+        {% if request.session.house_a == 'house_a' %}
+        <p>earned {{request.session.house_earn}} from the house! {{request.session.time}}</p> 
+        {% endif %}
+        {% if request.session.casino_a == 'casino_a' %}
+        <p>earned {{request.session.casino_earn}} from the casino! {{request.session.time}}</p> 
+        {% endif %}
+    </div>
+</div>
+</div>
+</body>
+</html>
