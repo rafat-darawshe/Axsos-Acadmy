@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static%}
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div id="header"  style="background-color: #e4a062; display: flex; align-items: center;">
+            <h1>Welcome, {{logged_user.first_name}} </h1>
+            <h6><a style="padding-left: 23px; " id="logout" href="/logout">Logout</a></h6>
+        </div>
+        <div style="display: flex;">
+            <div style="margin-top: 40px;" class="addABook">
+                <div>
+                    <h3>{{book.title}}</h3>
+                    <p>
+                        Added by {{book.uploaded_by.first_name}}
+                        {{book.uploaded_by.last_name}}
+                    </p>
+                    <p>Added on: {{book.created_at}}</p>
+                    <p>Last updated on: {{book.updated_at}}</p>
+                    <p>Description: {{book.description}}</p>
+
+                </div>
+            </div>
+            <div class="col-4" style="margin-left: 207px; margin-top: 40px;">
+                <h4>Users who like this book:</h4>
+                <ul class="me-2">
+                  {%for user in book.users_who_like.all%} 
+                  <li>
+                    {{user.first_name}} {{user.last_name}}
+                    {%if user.id == logged_user.id%}
+                    <a href="/books/unfavorite/{{book.id}}">Un-Favorite</a>
+                    {%endif%} 
+                  </li>
+                  {%endfor%}
+                </ul>
+                {%if not logged_user in book.users_who_like.all%}
+                <a href="/books/favorite/{{book.id}}">Add to favorites</a>
+                {%endif%}
+            </div>
+        </div>    
+    </div>
+</body>
+</html>
