@@ -30,7 +30,7 @@ public class HomeController {
 
 		model.addAttribute("newUser", new User());
 		model.addAttribute("newLogin", new LoginUser());
-		return "index.jsp";
+		return "/user/index.jsp";
 	}
 	
 	@PostMapping("/register")
@@ -39,10 +39,10 @@ public class HomeController {
 		userServ.register(newUser, result);
 		if(result.hasErrors()) {
 			model.addAttribute("newLogin", new LoginUser());
-			return "index.jsp";
+			return "/user/index.jsp";
 		}
 		session.setAttribute("user_id", newUser.getId());
-		return "redirect:/success";
+		return "redirect:/books";
 	}
 	@PostMapping("/login")
 	public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin,
@@ -50,19 +50,10 @@ public class HomeController {
 		User user = userServ.login(newLogin, result);
 		if(result.hasErrors()) {
 			model.addAttribute("newUser", new User());
-			return "index.jsp";
+			return "/user/index.jsp";
 		}
 		session.setAttribute("user_id", user.getId());
-		return "redirect:/success";
-	}
-	@GetMapping("/success")
-	public String success(Model model, HttpSession session) {
-		if (session.getAttribute("user_id") != null) {
-			User loggedUser = userServ.findUserById((long) session.getAttribute("user_id"));
-			model.addAttribute("loggedUser", loggedUser);
-			return "success.jsp";
-		}
-		return "redirect:/home";
+		return "redirect:/books";
 	}
 
 	@GetMapping("/logout")
