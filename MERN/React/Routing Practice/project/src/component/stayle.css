@@ -1,0 +1,26 @@
+.in {
+    width: 100px;
+    height: 50px;
+    margin-top: 50px;
+    font-size: x-large;
+    
+
+
+}
+.rafat button{
+
+    font-size: xx-large;
+}
+.rafat input{
+    margin-top: 50px;
+    font-size: xx-large;
+    margin-right: 10px;
+}
+.txt{
+    width: 50ox;
+    font-size: 3rem;
+}
+.check{
+    width: 50px;
+    height: 20px;
+}
