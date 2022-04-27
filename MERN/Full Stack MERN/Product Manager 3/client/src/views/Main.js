@@ -6,6 +6,7 @@ const Main = (props) => {
     const [product, setProduct] = useState([]);
     const [loaded, setLoaded] = useState(false);
     
+    
     useEffect(()=>{
         axios.get('http://localhost:8000/api/product')
             .then(res=>{
@@ -13,16 +14,18 @@ const Main = (props) => {
                 setLoaded(true);
             })
             .catch(err => console.error(err));
-    },[]);
+        })
 
     
     const removeFromDom = productId => {
         setProduct(product.filter(product => product._id != productId));
     }
 
+
+
     return (
         <div>
-           <ProductForm/>
+           <ProductForm /> 
            <hr/>
            {loaded && <ProductList product={product} removeFromDom={removeFromDom}/>}
         </div>

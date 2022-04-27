@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
     
 const ProductList = (props) => {
     const { removeFromDom } = props;
-    
     const deleteProduct = (productId) => {
         axios.delete('http://localhost:8000/api/product/' + productId)
             .then(res => {
